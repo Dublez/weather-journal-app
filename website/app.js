@@ -35,7 +35,7 @@ const getAPIData = async (baseURL='', zip='', key='') => {
         const userResponse = document.querySelector('#feelings').value;
         return {
             temperature: weatherData.main.temp,
-            date: weatherData.dt,
+            date: new Date(weatherData.dt * 1000),
             userResponse: userResponse,
         };
     } catch(error) {
