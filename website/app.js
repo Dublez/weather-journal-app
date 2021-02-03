@@ -1,6 +1,6 @@
 /* Global Variables */
 //Base URL for OpenWeatherMap API 
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?units=metric&zip=';
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?units=imperial&zip=';
 
 // Personal API Key for OpenWeatherMap API
 const key = '&APPID=36d7234802a84134f886ebad20d776d0';
@@ -20,7 +20,7 @@ const onGenerate = async () => {
     const zip = document.querySelector('#zip').value;
     const res = getAPIData(baseURL,zip,key)
                     .then(weatherData => postServerData(postURL, weatherData))
-                    .then(updateUI());
+                    .then(()=>updateUI());
     return res;
 }
 
@@ -80,7 +80,7 @@ const updateUI = async () => {
     const date = weatherData.date;
     const response = weatherData.userResponse;
     document.querySelector('#date').innerHTML = date; 
-    document.querySelector('#temp').innerHTML = temperature;
+    document.querySelector('#temp').innerHTML = temperature+' Fr';
     document.querySelector('#content').innerHTML = response;
     return;
 }
